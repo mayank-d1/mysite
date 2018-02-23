@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends 'music/base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{album.artist}}</title>
+</head>
+<body>
+    {% block body %}
+        <img src={{album.album_logo.url}} style="width:20%">
+        <h1>{{album.album_title}}</h1>
+        <h2>{{album.artist}}</h2>
+
+            {% for song in album.song_set.all %}
+                    {{song.song_title}}
+                    {% if song.is_favorite %}
+                        <img src="http://i.imgur.com/b9b13Rd.png"/>
+                    {%endif%}
+                    <br>
+            {% endfor %}
+
+    {% endblock %}
+</body>
+</html>
